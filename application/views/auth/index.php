@@ -134,7 +134,7 @@
     var nextyear = month + '/' + day + '/' + year + ' 07:07:07';
 
     $('h2').countdown({
-      date: '4/21/2020 23:00:00', // TODO Date format: 07/27/2017 17:00:00
+      date: '4/25/2020 11:00:00', // TODO Date format: 07/27/2017 17:00:00
       offset: +7, // TODO Your Timezone Offset
       day: 'Day',
       days: 'Days'
@@ -143,14 +143,38 @@
     });
   </script>
 
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4447724730.js" crossorigin="anonymous"></script>
+  <!-- Call sweet alert -->
+  <script src="<?= base_url('asset/'); ?>/js/sweet/sweetalert2.all.min.js"></script>
 
+  <script>
+    $('.btn-submit').on('click', function(e) {
+      e.preventDefault();
+      Swal.fire({
+        title: 'Kamu belum login',
+        text: "Silahkan login untuk melakukan vote menggunakan akun Sistem Akademik Anda",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK, Login'
+      }).then((result) => {
+        if (result.value) {
+          // Swal.fire(
+          //   'Kamu berhasil keluar',
+          //   'Voting hanya bisa dilakukan satu kali',
+          //   'success'
+          // )
+          window.location.href = "<?= base_url() ?>/auth/login";
+        }
+      })
+    });
+  </script>
 </body>
 
 </html>
