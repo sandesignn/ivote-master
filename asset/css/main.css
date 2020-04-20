@@ -158,7 +158,7 @@ nav .logout-btn {
 
 }
 .countdown {
-  width: 450px;
+  width: 550px;
   height: 70px;
   background-color: #e8e8e8;
   text-align: center;
@@ -171,8 +171,8 @@ nav .logout-btn {
   font-weight: 700;
 }
 .countdown span {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .custom-radio input{
   display: none;
