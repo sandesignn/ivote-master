@@ -19,69 +19,11 @@
 <body>
   <!-- Main Container -->
   <div class="mymain-container">
-    <h2>
-      Pemilihan Gubma dan Wagubma <br> Fakultas Ilmu Komputer <br />
-      Universitas Sriwijaya
+    <h2 class="thanks">
+      Terimakasih. <br> Kamu telah melakukan voting.
     </h2>
-    <div class="jumbo-img">
+    <div class="jumbo-img-submited">
       <img width="400" src="<?= base_url('asset/') ?>img/index-img.png" alt="" />
-    </div>
-    <div class="titleVote">
-      <h4>Vote Kandidat Calon Gubma & Wagubma</h4>
-    </div>
-    <form class="form-submit" action="<?= base_url(); ?>auth/submit" method="post">
-      <!-- Candidat Boxes -->
-      <div class="boxKandidat">
-        <div class="person">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable"><img src="<?= base_url('asset/') ?>img/1.jpg" alt="profile-picture" /></a>
-        </div>
-        <div class="name">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable">
-            <h4>Ade & Juanda</h4>
-          </a>
-          <h5>SI 2019 & SK 2019</h5>
-        </div>
-        <div class="radio-box">
-          <label class="custom-radio">
-            <input type="hidden" name="nim" value="<?= $userlogin['nim']; ?>">
-            <input type="radio" name="radio-input" value="1">
-            <div class="radio-btn"><i class="fas fa-check"></i></div>
-          </label>
-        </div>
-      </div>
-      <!-- End Candidat Boxes -->
-      <!-- Candidat Boxes -->
-      <div class="boxKandidat">
-        <div class="person">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable"><img src="<?= base_url('asset/') ?>img/1.jpg" alt="profile-picture" /></a>
-        </div>
-        <div class="name">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable">
-            <h4>Ade & Juanda</h4>
-          </a>
-          <h5>SI 2019 & SK 2019</h5>
-        </div>
-        <div class="radio-box">
-          <label class="custom-radio">
-            <input type="hidden" name="nim" value="<?= $userlogin['nim']; ?>">
-            <input type="radio" name="radio-input" value="2">
-            <div class="radio-btn"><i class="fas fa-check"></i></div>
-          </label>
-        </div>
-      </div>
-      <!-- End Candidat Boxes -->
-
-
-      <button class="btn-submit" type="submit">Kirim Vote</button>
-
-    </form>
-
-    <!-- Countdown Box -->
-    <div class="countdown-box">
-      <h2>Sisa Waktu Voting</h2>
-      <div class="countdown">
-        <h2>20 <span>:</span>43 <span>:</span> 42</h2>
-      </div>
     </div>
   </div>
 
@@ -114,6 +56,9 @@
       </div>
     </div>
   </div>
+  <?php
+  $dateVote = date("d-m-Y H:i:s", strtotime($uservote['date']));
+  ?>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -127,8 +72,8 @@
     $(document).ready(function() {
       Swal.fire({
         icon: 'success',
-        title: 'Yeyyy...Kamu berhasil login',
-        text: 'Sekarang kamu dapat melakukan vote, tapi ingat! Vote hanya dapat dilakukan satu kali dan tidak dapat diulang',
+        title: 'Terimakasih',
+        text: 'Kamu telah melakukan voting dan voting hanya dapat dilakukan 1 kali dan tidak bisa diulang',
         footer: '<a href="#">Pelajari lebih lanjut?</a>'
       })
     });
@@ -159,8 +104,8 @@
     $('.signed-btn').on('click', function() {
       Swal.fire({
         icon: 'question',
-        title: 'Kamu login sebagai',
-        text: "<?= $userlogin['nama_mahasiswa'] ?> (<?= $userlogin['jurusan'] ?>)"
+        title: 'Kamu telah vote sebagai',
+        text: "<?= $userlogin['nama_mahasiswa'] ?> pada <?= $dateVote  ?>"
       })
     });
 

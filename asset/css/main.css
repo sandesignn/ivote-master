@@ -15,6 +15,7 @@ body {
   background-image: url(../img/bg.png);
   background-repeat: no-repeat;
   min-height: 100vh;
+  margin-top: 0;
 }
 h2 {
   font-size: 28px;
@@ -119,6 +120,10 @@ nav .logout-btn {
 .jumbo-img {
   float: right;
   margin-top: -110px;
+}
+.jumbo-img-submited {
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
 .btn-detail {
   width: 50px;
@@ -298,4 +303,8 @@ p b{
 
 small{
   text-align: center;
+}
+
+.thanks{
+  margin-bottom: 40px;
 }
