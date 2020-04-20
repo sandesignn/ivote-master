@@ -1,0 +1,301 @@
+/* Reset Style */
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: "Montserrat", sans-serif;
+}
+html {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  width: 100%;
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+h2 {
+  font-size: 28px;
+  color: #e8e8e8;
+  font-weight: 700;
+}
+h4 {
+  font-size: 16px;
+  color: #e8e8e8;
+  font-weight: 700;
+}
+
+/* Image Circle */
+.person img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 0 10px 10px 0;
+  border: 3px solid #e8e8e8;
+}
+.name h4,
+.btn-detail {
+  margin: 10px 30px 0 0;
+}
+.name h5 {
+  font-size: 12px;
+  font-weight: 500;
+  color: #e8e8e8;
+  margin-top: 3px;
+}
+
+nav {
+  margin-top: 30px;
+}
+nav a:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e8e8e8;
+  text-decoration: none;
+}
+nav .sign-btn {
+  width: 160px;
+  height: 35px;
+  border-radius: 1000px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6239fd;
+  float: right;
+  text-decoration: none;
+  border-style: none;
+}
+nav .signed-btn {
+  width: 250px;
+  height: 35px;
+  border-radius: 1000px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6239fd;
+  float: right;
+  text-decoration: none;
+  margin-right: 20px;
+  border-style: none;
+}
+nav .logout-btn {
+  width: 160px;
+  height: 35px;
+  border-radius: 1000px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6239fd;
+  float: right;
+  text-decoration: none;
+  border-style: none;
+}
+
+.mycontainer {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+.mymain-container {
+  margin-left: 130px;
+  margin-right: 130px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.titleVote {
+  width: 400px;
+  height: 32px;
+  background-color: #e8e8e8;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 1000px;
+  margin: 50px 0 20px 0;
+  text-align: center;
+}
+.titleVote h4 {
+  color: #6239fd;
+  line-height: 32px;
+}
+
+/* Image Illustration */
+.jumbo-img {
+  float: right;
+  margin-top: -110px;
+}
+.btn-detail {
+  width: 50px;
+  height: 30px;
+  border-radius: 1000px;
+  position: relative;
+}
+.btn-detail i {
+  color: #6239fd;
+}
+.boxKandidat {
+  display: flex;
+  width: 60%;
+}
+
+.person,
+.name,
+.radio-custom {
+  display: inline-block;
+}
+
+.name{
+  width: 250px;
+}
+
+.countdown-box {
+  text-align: center;
+  float: right;
+  margin-right: 50px;
+  position: sticky;
+  margin-top: -80px;
+
+}
+.countdown {
+  width: 450px;
+  height: 70px;
+  background-color: #e8e8e8;
+  text-align: center;
+  border-radius: 10px;
+
+}
+.countdown h2 {
+  color: #6239fd;
+  line-height: 70px;
+  font-weight: 700;
+}
+.countdown span {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.custom-radio input{
+  display: none;
+}
+.radio-btn{
+  margin: 10px;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  background-color: #e8e8e8;
+  border-radius: 5px;
+
+}
+.radio-btn >i{
+  color: #19E2FB;
+  font-size: 36px;
+  margin-top: -7px;
+  opacity: 0;
+
+}
+
+.custom-radio input:checked + .radio-btn >i{
+  opacity: 1;
+}
+
+.btn-submit{
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  border-style: none;
+  color: #6239fd;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+
+/* CSS LOGIN FORM */
+/* ----------- */
+/* ----------- */
+/* ----------- */
+
+
+.countdown-box-login{
+  text-align: center;
+  float: right;
+  margin-right: 50px;
+  position: sticky;
+  margin-top: -161px;
+}
+
+.jumbo-img-login{
+  float: right;
+  margin-top: -70px;
+}
+ 
+.tulisan_login{
+	text-align: center;
+	/*membuat semua huruf menjadi kapital*/
+  color: #6239FD;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 30px;
+  
+}
+ 
+.kotak_login{
+  width: 404px;
+  height: 460px;
+	background: white;
+	/*meletakkan form ke tengah*/
+	margin: 80px auto;
+  padding: 30px 20px;
+  margin-left: 40px;
+  margin-right: 130px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+ 
+label{
+  font-size: 11pt;
+  color:#6239FD;
+}
+ 
+.form_login{
+	/*membuat lebar form penuh*/
+	box-sizing : border-box;
+  width: 302px;
+  height: 45px;
+	padding: 10px;
+	font-size: 11pt;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  margin-left: 9% ;
+  border: 2px solid #6239FD;
+}
+.form_name{
+  margin-left: 9% ;
+}
+ 
+.tombol_login{
+	background: #6239FD;
+	color: white;
+  font-size: 16px;
+  font-weight: 600;
+  width: 302px;
+  height: 45px;
+	border: none;
+	border-radius: 3px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  
+}
+ 
+.kotak_login a{
+  font-weight: 500;
+  color: #6239FD;
+  padding-top: 20px;
+  font-size: 14px;
+}
+p b{
+  font-weight: 800;
+}
+
+small{
+  text-align: center;
+}
