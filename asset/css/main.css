@@ -308,3 +308,131 @@ small{
 .thanks{
   margin-bottom: 40px;
 }
+
+/* // Medium devices (tablets, 768px and up) */
+
+@media only screen and (max-width:768px){
+  h2 {
+  font-size: 20px;
+  color: #e8e8e8;
+  font-weight: 700;
+}
+h4 {
+  font-size: 14px;
+  color: #e8e8e8;
+  font-weight: 700;
+
+}
+.mycontainer {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.mymain-container {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.jumbo-img {
+  float: right;
+  margin-top: -110px;
+  display: none;
+}
+.titleVote {
+  width: 300px;
+  height: 32px;
+  background-color: #e8e8e8;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 1000px;
+  margin: 50px 0 20px 0;
+  text-align: center;
+}
+.name h4{
+  width: 150px;
+}
+
+.countdown-box {
+  text-align: center;
+  margin: auto;
+
+
+}
+.countdown {
+  width: 340px;
+  height: 70px;
+  background-color: #e8e8e8;
+  text-align: center;
+  border-radius: 10px;
+
+}
+.btn-submit{
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  border-style: none;
+  color: #6239fd;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.jumbo-img-login{
+  float: right;
+  display: none;
+}
+ 
+.kotak_login{
+  width: 330px;
+  height: 460px;
+	background: white;
+	/*meletakkan form ke tengah*/
+  padding: 30px 20px;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.form_login{
+	/*membuat lebar form penuh*/
+	box-sizing : border-box;
+  width: 250px;
+  height: 45px;
+	padding: 10px;
+	font-size: 10pt;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  margin-left: 9% ;
+  border: 1px solid #6239FD;
+}
+
+.tombol_login{
+	background: #6239FD;
+	color: white;
+  font-size: 16px;
+  font-weight: 600;
+  width: 250px;
+  height: 45px;
+	border: none;
+	border-radius: 3px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  
+}
+
+nav .signed-btn {
+  width: 250px;
+  height: 35px;
+  border-radius: 1000px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6239fd;
+  float: right;
+  text-decoration: none;
+  margin-right: 20px;
+  border-style: none;
+
+  display: none;
+}
+}

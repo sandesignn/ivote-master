@@ -1,19 +1,28 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class auth extends CI_Controller
+class Auth extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('auth/index.php');
+        $data['kandidat'] = $this->db->get('kandidat')->result_array();
+        $data['waktu'] = $this->db->get('waktu')->row_array();
+
+        $this->load->view('auth/index.php',$data);
     }
     public function login()
     {
-        $this->load->view('auth/login.php');
+        $data['kandidat'] = $this->db->get('kandidat')->result_array();
+        $data['waktu'] = $this->db->get('waktu')->row_array();
+
+        $this->load->view('auth/login.php',$data);
         $this->loginwork();
     }
     public function user()
     {
+
+        $data['kandidat'] = $this->db->get('kandidat')->result_array();
+        $data['waktu'] = $this->db->get('waktu')->row_array();
 
         if (!$this->session->userdata('user')) { //jika user tidak login arahkan ke halaman login
             redirect('auth/login');
@@ -60,7 +69,7 @@ class auth extends CI_Controller
     }
 
     public function submit()
-    {
+    {   
         $choice = $this->input->post('radio-input');
         $nim = $this->input->post('nim');
         date_default_timezone_set("Asia/Bangkok");
@@ -81,6 +90,7 @@ class auth extends CI_Controller
 
     public function submited()
     {
+        
         if (!$this->session->userdata('user')) { //jika user tidak login arahkan ke halaman login
             redirect('auth/login');
         } else {

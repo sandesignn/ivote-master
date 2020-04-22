@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
@@ -33,44 +33,55 @@
       <h4>Vote Kandidat Calon Gubma & Wagubma</h4>
     </div>
     <form action="#" method="post">
-      <!-- Candidat Boxes -->
-      <div class="boxKandidat">
-        <div class="person">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable"><img src="<?= base_url('asset/') ?>img/1.jpg" alt="profile-picture" /></a>
+
+      <?php foreach ($kandidat as $k) : ?>
+        <!-- Candidat Boxes -->
+        <div class="boxKandidat">
+          <div class="person">
+            <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>"><img src="<?= base_url('asset/') ?>img/kandidat/<?= $k['foto_kandidat'] ?>" alt="profile-picture" /></a>
+          </div>
+          <div class="name">
+            <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>">
+              <h4><?= $k['nama_kandidat'] ?></h4>
+            </a>
+            <h5><?= $k['jurusan'] ?></h5>
+          </div>
+          <div class="radio-box">
+            <label class="custom-radio">
+              <input type="radio" name="jj" value="<?= $k['id_kandidat'] ?>">
+              <div class="radio-btn"><i class="fas fa-check"></i></div>
+            </label>
+          </div>
         </div>
-        <div class="name">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable">
-            <h4>Ade & Juanda</h4>
-          </a>
-          <h5>SI 2019 & SK 2019</h5>
+        <!-- End Candidat Boxes -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal<?= $k['id_kandidat'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Visi & Misi Kandidat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="ml-5">
+                  <h3>Visi</h3>
+                  <?= $k['visi'] ?>
+                </div>
+                <div class="ml-5">
+                  <h3>Misi</h3>
+                  <?= $k['misi'] ?>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="radio-box">
-          <label class="custom-radio">
-            <input type="radio" name="jj" value="ade">
-            <div class="radio-btn"><i class="fas fa-check"></i></div>
-          </label>
-        </div>
-      </div>
-      <!-- End Candidat Boxes -->
-      <!-- Candidat Boxes -->
-      <div class="boxKandidat">
-        <div class="person">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable"><img src="<?= base_url('asset/') ?>img/1.jpg" alt="profile-picture" /></a>
-        </div>
-        <div class="name">
-          <a href="#" data-toggle="modal" data-target="#exampleModalScrollable">
-            <h4>Ade & Juanda</h4>
-          </a>
-          <h5>SI 2019 & SK 2019</h5>
-        </div>
-        <div class="radio-box">
-          <label class="custom-radio">
-            <input type="radio" name="jj" value="ade">
-            <div class="radio-btn"><i class="fas fa-check"></i></div>
-          </label>
-        </div>
-      </div>
-      <!-- End Candidat Boxes -->
+      <?php endforeach ?>
 
 
       <button class="btn-submit" type="submit">Kirim Vote</button>
@@ -104,25 +115,13 @@
     </div>
   </footer>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle">Visi & Misi Kandidat</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <?php
+
+  $time = $waktu['end'];
+  $newtime = date("m/d/Y H:i:s", strtotime($time));
+
+  ?>
 
 
   <script class="source" type="text/javascript">
@@ -134,7 +133,7 @@
     var nextyear = month + '/' + day + '/' + year + ' 07:07:07';
 
     $('h2').countdown({
-      date: '4/25/2020 11:00:00', // TODO Date format: 07/27/2017 17:00:00
+      date: '<?= $newtime ?>', // TODO Date format: 07/27/2017 17:00:00
       offset: +7, // TODO Your Timezone Offset
       day: 'Day',
       days: 'Days'
