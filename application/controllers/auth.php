@@ -8,14 +8,14 @@ class Auth extends CI_Controller
         $data['kandidat'] = $this->db->get('kandidat')->result_array();
         $data['waktu'] = $this->db->get('waktu')->row_array();
 
-        $this->load->view('auth/index.php',$data);
+        $this->load->view('auth/index.php', $data);
     }
     public function login()
     {
         $data['kandidat'] = $this->db->get('kandidat')->result_array();
         $data['waktu'] = $this->db->get('waktu')->row_array();
 
-        $this->load->view('auth/login.php',$data);
+        $this->load->view('auth/login.php', $data);
         $this->loginwork();
     }
     public function user()
@@ -41,7 +41,6 @@ class Auth extends CI_Controller
     private function loginwork()
     {
 
-        $pencet = $this->input->post('btn-go');
         $nim = $this->input->post('nim');
         $pass = $this->input->post('password');
 
@@ -53,8 +52,12 @@ class Auth extends CI_Controller
                 $data = [
                     'user' => $user['nim']
                 ];
-                $this->session->set_userdata($data);
-                redirect('auth/user');
+                if ($user['fakultas'] == "Ilmu Komputer") {
+                    $this->session->set_userdata($data);
+                    redirect('auth/user');
+                } else {
+                    $this->session->set_flashdata('m', '<small class="warning-text text-danger form_name">Akun bukan mahasiswa Fasilkom</small><br>');
+                }
             } else {
                 $this->session->set_flashdata('m', '<small class="warning-text text-danger form_name">Password salah!</small><br>');
             }
@@ -69,7 +72,7 @@ class Auth extends CI_Controller
     }
 
     public function submit()
-    {   
+    {
         $choice = $this->input->post('radio-input');
         $nim = $this->input->post('nim');
         date_default_timezone_set("Asia/Bangkok");
@@ -90,7 +93,7 @@ class Auth extends CI_Controller
 
     public function submited()
     {
-        
+
         if (!$this->session->userdata('user')) { //jika user tidak login arahkan ke halaman login
             redirect('auth/login');
         } else {

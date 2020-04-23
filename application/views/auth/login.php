@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <!-- Bootstrap CSS -->
@@ -12,6 +12,8 @@
     <!-- <link type="text/css" href="<?= base_url() ?>asset/js/countdown/jquery.countdown.css?v=1.0.0" rel="stylesheet"> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>asset/js/countdown/jquery.countdown.min.js?v=1.0.0"></script>
+    <!-- Call sweet alert -->
+    <script src="<?= base_url('asset/'); ?>/js/sweet/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="<?= base_url('asset/') ?>css/main.css" />
     <title>Login iVote</title>
 </head>
@@ -50,21 +52,46 @@
             </form>
 
         </div>
-        <!-- Countdown Box -->
-        <div class="countdown-box">
-            <h2>Sisa Waktu Voting</h2>
-            <div class="countdown">
-                <h2>
-                    <span class="days">00</span> Hr
-                    <span class="separator">:</span>
-                    <span class="hours">0</span> Jm
-                    <span class="separator">:</span>
-                    <span class="minutes">0</span> Mnt
-                    <span class="separator">:</span>
-                    <span class="seconds">00</span> Dtk
-                </h2>
+        <?php
+        $start = strtotime($waktu['start']);
+        $end = strtotime($waktu['end']);
+        date_default_timezone_set("Asia/Bangkok");
+        $now = strtotime(date("Y-m-d H:i:s"));
+        if ($start <= $now) {
+        ?>
+            <!-- Countdown Box -->
+            <div class="countdown-box">
+                <h2>Sisa Waktu Voting</h2>
+                <div class="countdown">
+                    <h2>
+                        <span class="days">00</span> Hr
+                        <span class="separator">:</span>
+                        <span class="hours">0</span> Jm
+                        <span class="separator">:</span>
+                        <span class="minutes">0</span> Mnt
+                        <span class="separator">:</span>
+                        <span class="seconds">00</span> Dtk
+                    </h2>
+                </div>
             </div>
-        </div>
+
+
+
+        <?php
+        } else {
+        ?>
+            <!-- Countdown Box -->
+            <div class="countdown-box">
+                <h2>Voting Akan Dimulai Pada</h2>
+                <div class="countdown">
+                    <h2>
+                        <?= date("d-M-Y H:i:s", strtotime($waktu['start'])) ?>
+                    </h2>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
     </div>
     <?php
 
@@ -116,7 +143,12 @@
             day: 'Day',
             days: 'Days'
         }, function() {
-            alert('Done!');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Waktu Voting Telah Berakhir',
+                text: '',
+                footer: '<a href="#">Pelajari lebih lanjut?</a>'
+            })
         });
     </script>
 
@@ -127,6 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/4447724730.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

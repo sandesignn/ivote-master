@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
@@ -35,85 +35,184 @@
     <div class="titleVote">
       <h4>Vote Kandidat Calon Gubma & Wagubma</h4>
     </div>
-    <form class="form-submit" action="<?= base_url(); ?>auth/submit" method="post">
-      <input type="hidden" name="nim" value="<?= $userlogin['nim'] ?>">
-      <?php foreach ($kandidat as $k) : ?>
-        <!-- Candidat Boxes -->
-        <div class="boxKandidat">
-          <div class="person">
-            <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>"><img src="<?= base_url('asset/') ?>img/kandidat/<?= $k['foto_kandidat'] ?>" alt="profile-picture" /></a>
-          </div>
-          <div class="name">
-            <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>">
-              <h4><?= $k['nama_kandidat'] ?></h4>
-            </a>
-            <h5><?= $k['jurusan'] ?></h5>
-          </div>
-          <div class="radio-box">
-            <label class="custom-radio">
 
-              <input type="radio" name="radio-input" value="<?= $k['id_kandidat'] ?>">
-              <div class="radio-btn"><i class="fas fa-check"></i></div>
-            </label>
+    <?php
+    $enddate = strtotime($waktu['end']);
+    date_default_timezone_set("Asia/Bangkok");
+    $now = strtotime(date("Y-m-d H:i:s"));
+    if ($enddate >= $now) {
+    ?>
+      <form class="form-submit" action="<?= base_url(); ?>auth/submit" method="post">
+        <input type="hidden" name="nim" value="<?= $userlogin['nim'] ?>">
+        <?php foreach ($kandidat as $k) : ?>
+          <!-- Candidat Boxes -->
+          <div class="boxKandidat">
+            <div class="person">
+              <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>"><img src="<?= base_url('asset/') ?>img/kandidat/<?= $k['foto_kandidat'] ?>" alt="profile-picture" /></a>
+            </div>
+            <div class="name">
+              <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>">
+                <h4><?= $k['nama_kandidat'] ?></h4>
+              </a>
+              <h5><?= $k['jurusan'] ?></h5>
+            </div>
+            <div class="radio-box">
+              <label class="custom-radio">
+                <input type="radio" name="radio-input" value="<?= $k['id_kandidat'] ?>">
+                <div class="radio-btn"><i class="fas fa-check"></i></div>
+              </label>
+            </div>
           </div>
-        </div>
-        <!-- End Candidat Boxes -->
+          <!-- End Candidat Boxes -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal<?= $k['id_kandidat'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Visi & Misi Kandidat</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="ml-5">
-                  <h3>Visi</h3>
-                  <?= $k['visi'] ?>
+          <!-- Modal -->
+          <div class="modal fade" id="modal<?= $k['id_kandidat'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">Visi & Misi Kandidat</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <div class="ml-5">
-                  <h3>Misi</h3>
-                  <?= $k['misi'] ?>
+                <div class="modal-body">
+                  <div class="ml-5">
+                    <h3>Visi</h3>
+                    <?= $k['visi'] ?>
+                  </div>
+                  <div class="ml-5">
+                    <h3>Misi</h3>
+                    <?= $k['misi'] ?>
+                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
               </div>
             </div>
           </div>
+        <?php endforeach ?>
+
+        <button class="btn-submit" type="submit">Kirim Vote</button>
+
+      </form>
+      <?php
+      $start = strtotime($waktu['start']);
+      if ($start <= $now) {
+      ?>
+
+        <!-- Countdown Box -->
+        <div class="countdown-box">
+          <h2>Sisa Waktu Voting</h2>
+          <div class="countdown">
+            <h2>
+              <span class="days">00</span> Hr
+              <span class="separator">:</span>
+              <span class="hours">0</span> Jm
+              <span class="separator">:</span>
+              <span class="minutes">0</span> Mnt
+              <span class="separator">:</span>
+              <span class="seconds">00</span> Dtk
+            </h2>
+          </div>
         </div>
-      <?php endforeach ?>
 
 
 
-      <button class="btn-submit" type="submit">Kirim Vote</button>
+      <?php
+      } else {
+      ?>
+        <!-- Countdown Box -->
+        <div class="countdown-box">
+          <h2>Voting Akan Mulai Pada</h2>
+          <div class="countdown">
+            <h2>
+              <?= date("d-M-Y H:i:s", strtotime($waktu['start'])) ?>
+            </h2>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
 
-    </form>
+
     <?php
-
-    $time = $waktu['end'];
-    $newtime = date("m/d/Y H:i:s", strtotime($time));
-
+    } else {
     ?>
+      <form action="#" method="post">
 
-    <!-- Countdown Box -->
-    <div class="countdown-box">
-      <h2>Sisa Waktu Voting</h2>
-      <div class="countdown">
-        <h2>
-          <span class="days">00</span> Hr
-          <span class="separator">:</span>
-          <span class="hours">0</span> Jm
-          <span class="separator">:</span>
-          <span class="minutes">0</span> Mnt
-          <span class="separator">:</span>
-          <span class="seconds">00</span> Dtk
-        </h2>
+        <?php foreach ($kandidat as $k) : ?>
+          <!-- Candidat Boxes -->
+          <div class="boxKandidat">
+            <div class="person">
+              <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>"><img src="<?= base_url('asset/') ?>img/kandidat/<?= $k['foto_kandidat'] ?>" alt="profile-picture" /></a>
+            </div>
+            <div class="name">
+              <a href="#" data-toggle="modal" data-target="#modal<?= $k['id_kandidat'] ?>">
+                <h4><?= $k['nama_kandidat'] ?></h4>
+              </a>
+              <h5><?= $k['jurusan'] ?></h5>
+            </div>
+            <div class="radio-box">
+              <label class="custom-radio">
+                <input type="radio" name="jj" value="<?= $k['id_kandidat'] ?>">
+                <div class="radio-btn"><i class="fas fa-check"></i></div>
+              </label>
+            </div>
+          </div>
+          <!-- End Candidat Boxes -->
+
+          <!-- Modal -->
+          <div class="modal fade" id="modal<?= $k['id_kandidat'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">Visi & Misi Kandidat</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="ml-5">
+                    <h3>Visi</h3>
+                    <?= $k['visi'] ?>
+                  </div>
+                  <div class="ml-5">
+                    <h3>Misi</h3>
+                    <?= $k['misi'] ?>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach ?>
+
+        <button class="btn-submit" type="submit" disabled>Kirim Vote</button>
+
+      </form>
+
+
+      <!-- Countdown Box -->
+      <div class="countdown-box">
+        <h2>Voting Berakhir</h2>
+        <div class="countdown">
+          <h2>
+            <span class="dayss">00</span> Hr
+            <span class="separators">:</span>
+            <span class="hourss">0</span> Jm
+            <span class="separators">:</span>
+            <span class="minutess">0</span> Mnt
+            <span class="separators">:</span>
+            <span class="secondss">00</span> Dtk
+          </h2>
+        </div>
       </div>
-    </div>
+    <?php
+    }
+    ?>
   </div>
 
   <!-- End Main Container -->
@@ -126,6 +225,12 @@
     </div>
   </footer>
   <!-- Countdown js -->
+  <?php
+
+  $time = $waktu['end'];
+  $newtime = date("m/d/Y H:i:s", strtotime($time));
+
+  ?>
   <script class="source" type="text/javascript">
     var now = new Date();
     var day = now.getDate();
